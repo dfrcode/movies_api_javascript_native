@@ -4,7 +4,7 @@ const apiKey = '73368105b34aeee387a43b668a46b4b0'
 const pathMoviesPopularity = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc'
 const API_URL = `${pathMoviesPopularity}&api_key=${apiKey}&page=1`
 
-const IMG_SIZE = 'https://image.tmdb.org/t/p/w500'
+const IMG_SIZE = 'https://image.tmdb.org/t/p/w200'
 
 const pathSearch = 'https://api.themoviedb.org/3/search/movie?'
 const SEARCH_URL = `${pathSearch}&api_key=${apiKey}&query="`
@@ -34,15 +34,24 @@ function showMovies(movies) {
         movieImage = createEl('div', 'movie_image', movieEl),
         img = createEl('img', 'image', movieImage),
         movieInfo = createEl('div', 'movie_info', movieEl),
-        titleMovieInfo = createEl('h3', 'title', movieInfo),
+        titleMovieInfo = createEl('h3', 'title_info', movieInfo),
         rating = createEl('span', 'green', movieInfo),
         overviewMovies = createEl('div', 'overview', movieEl),
-        titleOverview = createEl('h3', 'overview', overviewMovies)
+        descriptionOverview = createEl('p', 'description', overviewMovies)
 
         img.src = `${IMG_SIZE}${poster_path}`
         titleMovieInfo.textContent = title
+
         rating.innerHTML = vote_average
-        titleOverview.textContent = overview
+
+        const desc = overview.split(' ')
+        const src = []
+
+        for (let i = 0; i < 20; i++) {
+            src.push(desc[i])
+        }
+
+        descriptionOverview.textContent = `${src.join(' ')}...`
     });
 }
 
@@ -59,6 +68,24 @@ form.addEventListener('submit', (event) => {
         window.location.reload()
     }
 })
+
+function validVoteAverage(vote_average) {
+    const desc = vote_average.split('.')
+    const len = desc.length
+    const src = []
+  
+    for (let i = 0; i < len; i++) {
+        src.push(i)
+    }
+
+    if (src.length === 2) {
+        const result = src.join('.')
+    } else {
+        const result = src[0] + '.0'
+    }
+   
+    return result
+}
 
 function createEl(element, className, parent) {
 

@@ -30,9 +30,10 @@
 }
 
 .movie {
+    overflow: hidden;
     cursor: pointer;
     width: 200px;
-    height: 300px;
+    height: 400px;
     margin: 5px;
     border: 1px solid #dddddd;
     border-radius: 3px;
@@ -43,9 +44,13 @@
 }
 
 .movie_image {
+    overflow: hidden;
     width: 100%;
-    height: 150px;
-    background-color: cornflowerblue;
+    height: 295px;
+}
+
+.movie_image img {
+    width: 100%;
 }
 
 .movie_info {
@@ -53,9 +58,14 @@
     height: 30px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     text-align: right;
-    padding: 0 5px;
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+.title_info {
+    font-size: 11px;
 }
 
 .movie_info .green {
@@ -87,11 +97,11 @@
     font-size: 12px;
     text-align: justify;
     padding: 0 5px;
+    background-color: #ffffff;
 }
 
-.overview h3 {
-    padding-top: 10px;
-    padding-bottom: 5px;
+.description {
+    font-size: 10px;
 }
 
 @media (max-width: 480px) {
