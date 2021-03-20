@@ -460,14 +460,9 @@ async function getMovies(url) {
   showMovies(data.results);
 }
 function showMovies(movies) {
-  content.innerHTML = '';
+  // content.innerHTML = ''
   movies.forEach(movie => {
-    const {title, poster_path, vote_average, overview} = movie;
-    const movieEl = createEl('div', 'movie', content), movieImage = createEl('div', 'movie_image', movieEl), img = createEl('img', 'image', movieImage), movieInfo = createEl('div', 'movie_info', movieEl), titleMovieInfo = createEl('h3', 'title', movieInfo), rating = createEl('span', 'green', movieInfo), overviewMovies = createEl('div', 'overview', movieEl), titleOverview = createEl('h3', 'overview', overviewMovies);
-    img.src = `${IMG_SIZE}${poster_path}`;
-    titleMovieInfo.textContent = title;
-    rating.innerHTML = vote_average;
-    titleOverview.textContent = overview;
+    const {title} = movie;
   });
 }
 form.addEventListener('submit', event => {
@@ -480,13 +475,7 @@ form.addEventListener('submit', event => {
     window.location.reload();
   }
 });
-function createEl(element, className, parent) {
-  const el = document.createElement(element);
-  el.classList.add(className);
-  parent.appendChild(el);
-  return el;
-}
 
 },{"../css/style.css":"6QmIw"}],"6QmIw":[function() {},{}]},["1vSbZ","3GZMZ"], "3GZMZ", "parcelRequire0f11")
 
-//# sourceMappingURL=index.355c732e.js.map
+//# sourceMappingURL=index.HASH_REF_6c289700c20eac7e3f164c94355c732e.js.map

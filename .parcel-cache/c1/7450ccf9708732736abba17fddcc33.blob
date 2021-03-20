@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies | movie search engine</title>
+  </head>
+  <body>
+    <header class="header">
+      <form id="form">
+        <input id="search" class="search" type="search" placeholder="search...">
+      </form>
+    </header>
+    <div id="content" class="content">
+      <div class="movie">
+        <div class="movie_image"></div>
+        <div class="movie_info">
+          <h3>Title</h3>
+          <span class="green">9.8</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          incidunt voluptatem cum maxime at fugit reprehenderit pariatur earum
+          corrupti hic?
+        </div>
+      </div>
+
+      <div class="movie">
+        <div class="movie_image"></div>
+        <div class="movie_info">
+          <h3>Title</h3>
+          <span class="green">9.8</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          incidunt voluptatem cum maxime at fugit reprehenderit pariatur earum
+          corrupti hic?
+        </div>
+      </div>
+
+      <div class="movie">
+        <div class="movie_image"></div>
+        <div class="movie_info">
+          <h3>Title</h3>
+          <span class="green">9.8</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          incidunt voluptatem cum maxime at fugit reprehenderit pariatur earum
+          corrupti hic?
+        </div>
+      </div>
+
+      <div class="movie">
+        <div class="movie_image"></div>
+        <div class="movie_info">
+          <h3>Title</h3>
+          <span class="green">9.8</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          incidunt voluptatem cum maxime at fugit reprehenderit pariatur earum
+          corrupti hic?
+        </div>
+      </div>
+
+      <div class="movie">
+        <div class="movie_image"></div>
+        <div class="movie_info">
+          <h3>Title</h3>
+          <span class="orange">4.8</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          incidunt voluptatem cum maxime at fugit reprehenderit pariatur earum
+          corrupti hic?
+        </div>
+      </div>
+
+      <div class="movie">
+        <div class="movie_image"></div>
+        <div class="movie_info">
+          <h3>Title</h3>
+          <span class="red">3.8</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+          incidunt voluptatem cum maxime at fugit reprehenderit pariatur earum
+          corrupti hic?
+        </div>
+      </div>
+    </div>
+
+    <script src="af20903c492a0cb09d276da1ed5a4b52"></script>
+  </body>
+</html>

@@ -9,6 +9,7 @@ const IMG_SIZE = 'https://image.tmdb.org/t/p/w500'
 const pathSearch = 'https://api.themoviedb.org/3/search/movie?'
 const SEARCH_URL = `${pathSearch}&api_key=${apiKey}&query="`
 
+const content = document.getElementById('content')
 const form = document.getElementById('form')
 const search = document.getElementById('search')
 
@@ -19,7 +20,30 @@ async function getMovies(url) {
     const res = await fetch(url)
     const data = await res.json()
 
-    console.log(data.results)
+    showMovies(data.results)
+}
+
+function showMovies(movies) {
+
+    content.innerHTML = ''
+
+    movies.forEach((movie) => {
+        const { title, poster_path, vote_average, overview } = movie
+
+        const movieEl = createEl('div', 'movie', content),
+        movieImage = createEl('div', 'movie_image', movieEl),
+        img = createEl('img', 'image', movieImage),
+        movieInfo = createEl('div', 'movie_info', movieEl),
+        titleMovieInfo = createEl('h3', 'title', movieInfo),
+        rating = createEl('span', 'green', movieInfo),
+        overviewMovies = createEl('div', 'overview', movieEl),
+        titleOverview = createEl('h3', 'overview', overviewMovies)
+
+        img.src = `${IMG_SIZE}${poster_path}`
+        titleMovieInfo.textContent = title
+        rating.innerHTML = vote_average
+        titleOverview.textContent = overview
+    });
 }
 
 form.addEventListener('submit', (event) => {
@@ -35,3 +59,12 @@ form.addEventListener('submit', (event) => {
         window.location.reload()
     }
 })
+
+function createEl(element, className, parent) {
+
+    const el = document.createElement(element)
+    el.classList.add(className)
+    parent.appendChild(el)
+
+    return el
+}

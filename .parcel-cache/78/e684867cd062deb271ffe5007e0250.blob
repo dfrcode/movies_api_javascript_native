@@ -1,0 +1,42 @@
+require('../css/style.css');
+const apiKey = '73368105b34aeee387a43b668a46b4b0';
+const pathMoviesPopularity = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc';
+const API_URL = `${pathMoviesPopularity}&api_key=${apiKey}&page=1`;
+const IMG_SIZE = 'https://image.tmdb.org/t/p/w500';
+const pathSearch = 'https://api.themoviedb.org/3/search/movie?';
+const SEARCH_URL = `${pathSearch}&api_key=${apiKey}&query="`;
+const content = document.getElementById('content');
+const form = document.getElementById('form');
+const search = document.getElementById('search');
+// Get initial movies
+getMovies(API_URL);
+async function getMovies(url) {
+  const res = await fetch(url);
+  const data = await res.json();
+  showMovies(data.results);
+}
+function showMovies(movies) {
+  content.innerHTML = '';
+  movies.forEach(movie => {
+    const {title, poster_path, vote_average, overview} = movie;
+    const movieEl = document.createElement('div');
+    movieEl.classList.add('movie');
+    content.appendChild(movieEl);
+  });
+}
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const searchTerm = search.value;
+  if (searchTerm && searchTerm !== '') {
+    getMovies(SEARCH_URL + searchTerm);
+    search.value = '';
+  } else {
+    window.location.reload();
+  }
+});
+function createEl(element, className, parent) {
+  const el = document.createElement(element);
+  el.classList.add(className);
+  parent.appendChild(el);
+  return el;
+}
