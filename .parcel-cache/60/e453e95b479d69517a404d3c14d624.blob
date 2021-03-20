@@ -467,7 +467,7 @@ function showMovies(movies) {
     img.src = `${IMG_SIZE}${poster_path}`;
     titleMovieInfo.textContent = title;
     rating.innerHTML = validVoteAverage(vote_average);
-    descriptionOverview.textContent = validateDescription(overview);
+    descriptionOverview.textContent = `${src.join(' ')}...`;
   });
 }
 form.addEventListener('submit', event => {
@@ -498,7 +498,6 @@ function validateDescription(overview) {
   for (let i = 0; i < 20; i++) {
     src.push(desc[i]);
   }
-  return `${src.join(' ')}...`;
 }
 function createEl(element, className, parent) {
   const el = document.createElement(element);
@@ -509,4 +508,4 @@ function createEl(element, className, parent) {
 
 },{"../css/style.css":"6QmIw"}],"6QmIw":[function() {},{}]},["1vSbZ","3GZMZ"], "3GZMZ", "parcelRequire0f11")
 
-//# sourceMappingURL=index.355c732e.js.map
+//# sourceMappingURL=index.HASH_REF_6c289700c20eac7e3f164c94355c732e.js.map

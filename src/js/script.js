@@ -44,14 +44,9 @@ function showMovies(movies) {
 
         rating.innerHTML = validVoteAverage(vote_average)
 
-        const desc = overview.split(' ')
-        const src = []
+        
 
-        for (let i = 0; i < 20; i++) {
-            src.push(desc[i])
-        }
-
-        descriptionOverview.textContent = `${src.join(' ')}...`
+        descriptionOverview.textContent = validateDescription(overview)
     });
 }
 
@@ -81,6 +76,17 @@ function validVoteAverage(vote_average) {
         src[1] = '0'
     }
     return src.join('.')
+}
+
+function validateDescription(overview) {
+    const desc = overview.split(' ')
+    const src = []
+
+    for (let i = 0; i < 20; i++) {
+        src.push(desc[i])
+    }
+
+    return `${src.join(' ')}...`
 }
 
 function createEl(element, className, parent) {
