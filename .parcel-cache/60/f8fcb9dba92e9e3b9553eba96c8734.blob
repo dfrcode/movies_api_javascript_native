@@ -466,7 +466,8 @@ function showMovies(movies) {
     const movieEl = createEl('div', 'movie', content), movieImage = createEl('div', 'movie_image', movieEl), img = createEl('img', 'image', movieImage), movieInfo = createEl('div', 'movie_info', movieEl), titleMovieInfo = createEl('h3', 'title_info', movieInfo), rating = createEl('span', 'green', movieInfo), overviewMovies = createEl('div', 'overview', movieEl), descriptionOverview = createEl('p', 'description', overviewMovies);
     img.src = `${IMG_SIZE}${poster_path}`;
     titleMovieInfo.textContent = title;
-    rating.innerHTML = validVoteAverage(vote_average);
+    rating.innerHTML = vote_average;
+    validVoteAverage(vote_average);
     const desc = overview.split(' ');
     const src = [];
     for (let i = 0; i < 20; i++) {
@@ -486,16 +487,11 @@ form.addEventListener('submit', event => {
   }
 });
 function validVoteAverage(vote_average) {
-  const desc = [];
-  desc.push(vote_average.toString().split('.'));
-  const len = desc[0].length;
   const src = [];
-  src[0] = desc[0][0];
-  src[1] = desc[0][1];
-  if (len === 1) {
-    src[1] = '0';
-  }
-  return src.join('.');
+  const desc = src.push(vote_average.toString().split('.'));
+  console.log(desc);
+  const len = desc.length;
+  console.log(len);
 }
 function createEl(element, className, parent) {
   const el = document.createElement(element);
@@ -506,4 +502,4 @@ function createEl(element, className, parent) {
 
 },{"../css/style.css":"6QmIw"}],"6QmIw":[function() {},{}]},["1vSbZ","3GZMZ"], "3GZMZ", "parcelRequire0f11")
 
-//# sourceMappingURL=index.355c732e.js.map
+//# sourceMappingURL=index.HASH_REF_6c289700c20eac7e3f164c94355c732e.js.map

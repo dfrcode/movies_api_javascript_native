@@ -42,7 +42,7 @@ function showMovies(movies) {
         img.src = `${IMG_SIZE}${poster_path}`
         titleMovieInfo.textContent = title
 
-        rating.innerHTML = vote_average
+        rating.innerHTML = validVoteAverage(vote_average)
 
         const desc = overview.split(' ')
         const src = []
@@ -70,21 +70,17 @@ form.addEventListener('submit', (event) => {
 })
 
 function validVoteAverage(vote_average) {
-    const desc = vote_average.split('.')
-    const len = desc.length
-    const src = []
-  
-    for (let i = 0; i < len; i++) {
-        src.push(i)
-    }
+    const desc = [] 
+    desc.push(vote_average.toString().split('.'))
 
-    if (src.length === 2) {
-        const result = src.join('.')
-    } else {
-        const result = src[0] + '.0'
+    const len = desc[0].length
+    const src = []
+    src[0] = desc[0][0]
+    src[1] = desc[0][1]
+    if (len === 1) {
+        src[1] = '0'
     }
-   
-    return result
+    return src.join('.')
 }
 
 function createEl(element, className, parent) {
