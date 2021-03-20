@@ -7,7 +7,10 @@ const API_URL = `${pathMoviesPopularity}&api_key=${apiKey}&page=1`
 const IMG_SIZE = 'https://image.tmdb.org/t/p/w500'
 
 const pathSearch = 'https://api.themoviedb.org/3/search/movie?'
-const SEARCH_URL = `${pathMoviesPopularity}&api_key=${apiKey}&query="`
+const SEARCH_URL = `${pathSearch}&api_key=${apiKey}&query="`
+
+const form = document.getElementById('form')
+const search = document.getElementById('search')
 
 // Get initial movies
 getMovies(API_URL)
@@ -18,3 +21,17 @@ async function getMovies(url) {
 
     console.log(data.results)
 }
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    const searchTerm = search.value
+
+    if (searchTerm && searchTerm !== '') {
+        getMovies(SEARCH_URL + searchTerm)
+
+        search.value = ''
+    } else {
+        window.location.reload()
+    }
+})

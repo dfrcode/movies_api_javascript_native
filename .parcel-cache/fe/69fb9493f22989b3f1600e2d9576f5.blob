@@ -448,7 +448,7 @@ const pathMoviesPopularity = 'https://api.themoviedb.org/3/discover/movie?sort_b
 const API_URL = `${pathMoviesPopularity}&api_key=${apiKey}&page=1`;
 const IMG_SIZE = 'https://image.tmdb.org/t/p/w500';
 const pathSearch = 'https://api.themoviedb.org/3/search/movie?';
-const SEARCH_URL = `${pathSearch}&api_key=${apiKey}&query="`;
+const SEARCH_URL = `${pathMoviesPopularity}&api_key=${apiKey}&query="`;
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 // Get initial movies
@@ -463,12 +463,9 @@ form.addEventListener('submit', event => {
   const searchTerm = search.value;
   if (searchTerm && searchTerm !== '') {
     getMovies(SEARCH_URL + searchTerm);
-    search.value = '';
-  } else {
-    window.location.reload();
   }
 });
 
 },{"../css/style.css":"6QmIw"}],"6QmIw":[function() {},{}]},["1vSbZ","3GZMZ"], "3GZMZ", "parcelRequire0f11")
 
-//# sourceMappingURL=index.355c732e.js.map
+//# sourceMappingURL=index.HASH_REF_6c289700c20eac7e3f164c94355c732e.js.map
