@@ -459,6 +459,10 @@ async function getMovies(url) {
 }
 function showMovies(movies) {
   content.innerHTML = '';
+  if (movies.length === 0) {
+    const nonResults = createEl('div', 'no_results', content);
+    nonResults.textContent = 'No Results...';
+  }
   movies.forEach(movie => {
     const {title, poster_path, vote_average, overview} = movie;
     const movieEl = createEl('div', 'movie', content), movieImage = createEl('div', 'movie_image', movieEl), movieInfo = createEl('div', 'movie_info', movieEl), titleMovieInfo = createEl('h3', 'title_info', movieInfo), rating = createEl('span', 'green', movieInfo), overviewMovies = createEl('div', 'overview', movieEl), descriptionOverview = createEl('p', 'description', overviewMovies);
@@ -471,6 +475,7 @@ function showMovies(movies) {
     }
     titleMovieInfo.textContent = title;
     rating.innerHTML = validVoteAverage(vote_average);
+    validateColorRating(rating, vote_average);
     descriptionOverview.textContent = validateDescription(overview);
   });
 }
@@ -495,6 +500,16 @@ function validVoteAverage(vote_average) {
     src[1] = '0';
   }
   return src.join('.');
+}
+function validateColorRating(rating, vote_average) {
+  const num = Number.parseInt(vote_average);
+  if (num < 4) {
+    rating.classList.remove('green');
+    rating.classList.add('red');
+  } else if (num >= 4 && num <= 5) {
+    rating.classList.remove('green');
+    rating.classList.add('orange');
+  }
 }
 function validateDescription(overview) {
   const desc = overview.split(' ');

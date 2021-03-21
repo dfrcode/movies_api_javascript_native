@@ -27,6 +27,12 @@ function showMovies(movies) {
 
     content.innerHTML = ''
 
+    if (movies.length === 0) {
+
+        const nonResults = createEl('div', 'no_results', content)
+        nonResults.textContent = 'No Results...'
+    }
+
     movies.forEach((movie) => {
         const { title, poster_path, vote_average, overview } = movie
 
@@ -50,6 +56,7 @@ function showMovies(movies) {
         titleMovieInfo.textContent = title
 
         rating.innerHTML = validVoteAverage(vote_average)
+        validateColorRating(rating, vote_average)
 
         
 
@@ -83,6 +90,17 @@ function validVoteAverage(vote_average) {
         src[1] = '0'
     }
     return src.join('.')
+}
+
+function validateColorRating(rating, vote_average) {
+    const num = Number.parseInt(vote_average)
+    if (num < 4) {
+        rating.classList.remove('green')
+        rating.classList.add('red')
+    } else if (num >= 4 && num <= 5) {
+        rating.classList.remove('green')
+        rating.classList.add('orange')
+    }
 }
 
 function validateDescription(overview) {
