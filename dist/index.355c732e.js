@@ -464,7 +464,11 @@ function showMovies(movies) {
   movies.forEach(movie => {
     const {title, poster_path, vote_average, overview} = movie;
     const movieEl = createEl('div', 'movie', content), movieImage = createEl('div', 'movie_image', movieEl), img = createEl('img', 'image', movieImage), movieInfo = createEl('div', 'movie_info', movieEl), titleMovieInfo = createEl('h3', 'title_info', movieInfo), rating = createEl('span', 'green', movieInfo), overviewMovies = createEl('div', 'overview', movieEl), descriptionOverview = createEl('p', 'description', overviewMovies);
-    img.src = `${IMG_SIZE}${poster_path}`;
+    if (poster_path !== null) {
+      img.src = `${IMG_SIZE}${poster_path}`;
+    } else {
+      img.src = '../img/no_photo.jpg';
+    }
     titleMovieInfo.textContent = title;
     rating.innerHTML = validVoteAverage(vote_average);
     descriptionOverview.textContent = validateDescription(overview);
