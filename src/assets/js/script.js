@@ -1,5 +1,7 @@
 import '../css/style.css'
 
+
+// https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=73368105b34aeee387a43b668a46b4b0
 const apiKey = '73368105b34aeee387a43b668a46b4b0'
 const pathMoviesPopularity = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc'
 const API_URL = `${pathMoviesPopularity}&api_key=${apiKey}&page=1`
@@ -19,6 +21,9 @@ getMovies(API_URL)
 async function getMovies(url) {
     const res = await fetch(url)
     const data = await res.json()
+
+    const len = data.total_pages
+    let page = data.page
 
     showMovies(data.results)
 }
